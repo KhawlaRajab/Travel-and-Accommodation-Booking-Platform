@@ -33,4 +33,5 @@ export interface CartContextType {
     addToCart: (item: room) => void;
     checkItem: (item: room) => boolean;
     removeItem: (item: room) => void;
+    EmptyCart: () => void;
   }

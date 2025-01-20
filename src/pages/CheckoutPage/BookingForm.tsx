@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 
 const BookingForm: React.FC = () => {
-  const { cartItems } = useCart();
+  const { cartItems,EmptyCart } = useCart();
   const navigate = useNavigate();
   const formik = useFormik<bookingDetails>({
     initialValues: intialValues,
@@ -33,6 +33,7 @@ const BookingForm: React.FC = () => {
         
         console.log(res);
         console.log(res?.data);
+        EmptyCart();
         navigate('/Confirmation');
       }
       catch (error) {

@@ -23,7 +23,11 @@ export const CartProvider:React.FC<CartProviderProps> = ({ children }) => {
 
     const removeItem = (item:room) => {
         setCartItems(cartItems.filter((cartItem) => cartItem.roomId !== item.roomId));
-    }
+  }
+  
+  const EmptyCart = () => {
+    setCartItems([])
+  }
 
     useEffect(() => {
         localStorage.setItem("cartItems", JSON.stringify(cartItems));
@@ -37,6 +41,7 @@ export const CartProvider:React.FC<CartProviderProps> = ({ children }) => {
             addToCart,
             checkItem,
             removeItem,
+            EmptyCart
           }}
         >
           {children}
