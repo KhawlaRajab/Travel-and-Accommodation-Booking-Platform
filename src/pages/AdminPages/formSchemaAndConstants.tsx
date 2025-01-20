@@ -17,7 +17,16 @@ export const HotelInitialValues = {
 
 
 export const RoomInitialValues = {
-      
+    roomNumber: 1,
+    roomPhotoUrl: '',
+    roomType: '',
+    capacityOfAdults: 2,
+    capacityOfChildren: 0,
+    roomAmenities:[
+     
+      ],
+    price: 100,
+    availability: true
 }
 
 

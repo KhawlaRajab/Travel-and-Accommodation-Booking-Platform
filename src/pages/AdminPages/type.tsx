@@ -19,11 +19,16 @@ export interface Hotel{
 export interface Room{
     roomId?: number,
     roomNumber: number,
+    roomPhotoUrl?: string,
     roomType: string,
-    price: string,
-    capacityOfChildren: number,
     capacityOfAdults: number,
-    availability: boolean,
-    roomPhotoUrl: string,
-    roomAmenities:string[]
+    capacityOfChildren: number,
+    roomAmenities: 
+      {
+        name: string,
+        description: string
+      }[]
+    ,
+    price: number,
+    availability: boolean
 }
