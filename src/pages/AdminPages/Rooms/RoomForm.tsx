@@ -1,43 +1,37 @@
 import { Form, FormikProvider, useFormik } from "formik";
 import { Button, Divider, Stack, Typography } from "@mui/material";
 import TextInput from "../../../components/Field/TextField";
-import { addRoom, deleteRoom, updateRoom } from "../Api/Api";
-import { room } from "../../HotelPage/type";
+import { RoomInitialValues } from "../formSchemaAndConstants";
+import { Room } from "../type";
 
 interface FormProps{
     operation: 'add' | 'update',
-    room: room | null,
-    onClose :()=>void
+    room: Room | null,
+    onClose: () => void,
+    Delete: () => void,
+    update: (room: Room) => void,
+    add:(room:Room)=>void
 }
 
-const RoomForm: React.FC<FormProps> = ({operation,room,onClose}) => {
-    const formik = useFormik<room>({
+const RoomForm: React.FC<FormProps> = ({operation,room,onClose,Delete,update,add}) => {
+    const formik = useFormik<Room>({
         initialValues: room || RoomInitialValues ,
-        onSubmit: async(values) => {
-            try {
-                if (operation === 'add')
-                    await addRoom(values);
-                else if (room?.id) {
-                    await updateRoom(room.id, values);
-                }
+        onSubmit: (values) => {
+            if (operation === 'add')
+                add({...RoomInitialValues,...values });
+            else if (room?.roomId) {
+                 update({...room, ...values });
+            
             }
-            catch (error) {
-                
-            }
-            onClose();
-        }
-    });
+        onClose();
+    }
+});
 
     const handleDelete = async () => {
-        try {
-          if (room?.id) {
-            await deleteRoom(room.id); 
-            onClose();
-          }
-        } catch (error) {
-          
-        }
-      };
+        if (room?.roomId) {
+            Delete();
+    } 
+  };
     return (
         <FormikProvider value={formik} >
             <Form onSubmit={formik.handleSubmit} >
