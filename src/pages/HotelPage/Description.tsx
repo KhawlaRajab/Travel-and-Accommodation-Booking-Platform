@@ -4,8 +4,7 @@ import { descreption } from "./type";
 import { Rating, Stack, Typography } from "@mui/material";
 
 
-const hotelId = 1;
-const Description: React.FC = () => {
+const Description:React.FC<{hotelId:number}> = ({hotelId})  => {
     const { data, error, isLoading } = useQuery<descreption, Error>(
         ["getHotelInfo", hotelId],
         () => getHotelInfo(hotelId),

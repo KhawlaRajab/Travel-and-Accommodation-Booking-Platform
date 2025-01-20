@@ -4,10 +4,10 @@ import { getGallery } from "./API/Api";
 import { Box, ImageList, ImageListItem } from "@mui/material";
 import { useState } from "react";
 import FullScreenPhoto from "./FullScreenPhoto";
-import { useParams } from "react-router-dom";
 
-const hotelId = 1;
-const Gallery: React.FC = () => {
+
+
+const Gallery: React.FC<{hotelId:number}> = ({hotelId}) => {
   // const { hotelId } = useParams();
   const [photoUrl, setPhotoUrl] = useState<string>('');  
   const { data, error, isLoading } = useQuery<gallery[], Error>(

@@ -5,8 +5,7 @@ import Room from "./Room";
 import Grid from "@mui/material/Grid2";
 import { Box, Typography } from "@mui/material";
 
-const hotelId = 1;
-const Rooms: React.FC = () => {
+const Rooms:React.FC<{hotelId:number}> = ({hotelId})=> {
     const { data, isLoading, error } = useQuery<room[], Error>(
         ['getRooms', hotelId],
         () => getHotelRooms(hotelId), {

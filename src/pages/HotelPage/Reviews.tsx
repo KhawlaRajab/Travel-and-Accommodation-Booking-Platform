@@ -4,8 +4,8 @@ import { useQuery } from "react-query";
 import { getReviews } from "./API/Api";
 import { useState } from "react";
 
-const hotelId = 1;
-const Reviews: React.FC = () => {
+
+const Reviews:React.FC<{hotelId:number}> = ({hotelId})=> {
     const [index, setIndex] = useState<number>(3);
     const { data, isLoading, error } = useQuery<review[], Error>(
         ['getReview', hotelId],
