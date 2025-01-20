@@ -3,40 +3,33 @@ import { Hotel } from "../type";
 import { HotelInitialValues } from "../formSchemaAndConstants";
 import { Button, Divider, Stack, Typography } from "@mui/material";
 import TextInput from "../../../components/Field/TextField";
-import { addHotel, deleteHotel, updateHotel } from "../Api/Api";
+
 
 interface FormProps{
     operation: 'add' | 'update',
     hotel: Hotel | null,
-    onClose :()=>void
+    onClose: () => void,
+    Delete: () => void,
+    update: (hotel: Hotel) => void,
+    add:(hotel:Hotel)=>void
 }
 
-const HotelForm: React.FC<FormProps> = ({operation,hotel,onClose}) => {
+const HotelForm: React.FC<FormProps> = ({operation,hotel,onClose,Delete,update,add}) => {
     const formik = useFormik<Hotel>({
         initialValues: hotel || HotelInitialValues ,
-        onSubmit: async(values) => {
-            try {
-                if (operation === 'add')
-                    await addHotel(values);
-                else if (hotel?.id) {
-                    await updateHotel(hotel.id, values);
-                }
-            }
-            catch (error) {
-                
+        onSubmit: (values) => {
+            if (operation === 'add')
+                add({ ...HotelInitialValues, ...values });
+            else if (hotel?.id) {
+                update({ ...hotel, ...values });
             }
             onClose();
         }
     });
 
     const handleDelete = async () => {
-        try {
-          if (hotel?.id) {
-            await deleteHotel(hotel.id); 
-            onClose();
-          }
-        } catch (error) {
-          
+        if (hotel?.id) {
+            Delete();
         }
       };
     return (

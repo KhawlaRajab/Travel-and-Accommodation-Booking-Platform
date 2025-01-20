@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
-import { getHotels} from '../Api/Api';
-import { useQuery } from 'react-query';
-import { Hotel } from '../type';
-import { Button, Drawer } from '@mui/material';
+import {  addHotel,  getHotels,deleteHotel ,updateHotel} from '../Api/Api';
+import {  Hotel } from '../type';
+import { Button, Drawer, Typography } from '@mui/material';
 import HotelForm from './HotelForm';
 
 const columns: GridColDef[] = [
@@ -35,33 +34,76 @@ const HotelsTable: React.FC = () => {
   const [selectedHotel, setSelectedHotel] = useState<Hotel | null>(null);
   const [open, setOpen] = useState<boolean>(false);
   const [operation, setOperation] = useState<'add' | 'update'>('add');
+  const [rows, setRows] = useState<Hotel[]>([]);
 
-  const { data, isLoading, error } = useQuery<Hotel[], Error>(
-    ['hotels'],
-    getHotels
-  );
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  const addHotel = () => {
-    setSelectedHotel(null);
-    setOperation('add');
-    setOpen(true);
-  }
-
-  const updateHotel = (hotel:Hotel) => {
-    setSelectedHotel(hotel);
-    setOperation('update');
-    setOpen(true);
-  }
-
-  const rows = data ?? [];
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const hotels = await getHotels();
+        setRows(hotels);
+      } catch (err) {
+      }
+    };
+  
+    fetchData();
+  }, []);
+    
+    
+    const handelDelete = async () => {
+      try {
+        if (selectedHotel?.id) {
+          await deleteHotel(selectedHotel?.id);
+          setRows(rows.filter((hotel) => hotel.id !== selectedHotel?.id));
+        }
+      }
+      catch (error) {
+        
+      }
+    } 
+    
+    const handelUpdate = async (updatedHotel: Hotel) => {
+      try {
+        if (updatedHotel?.id) {
+          await updateHotel(updatedHotel?.id, updatedHotel);
+          setRows(rows.map((hotel) => (hotel.id === updatedHotel.id ? updatedHotel: hotel)));
+        }
+      }
+       catch (error) {
+         
+       }
+  
+    };
+  
+  
+  const handelAdd = async (addedHotel: Hotel) => {
+    try {
+      await addHotel(addedHotel);
+      setRows([...rows, addedHotel]);
+    } catch (error) {
+    }
+  };
+    
+  
+    const handelAddHotel = () => {
+      setSelectedHotel(null);
+      setOperation('add');
+      setOpen(true);
+    }
+  
+    const handelUpdateHotel = (hotel:Hotel) => {
+      setSelectedHotel(hotel);
+      setOperation('update');
+      setOpen(true);
+    }
+  
+  
 
   return (
     <Box>
-         <Button type='button' variant='contained' onClick={addHotel}>add</Button>
+        <Box sx={{display:'flex', justifyContent:'space-between', mb:2}}>
+        <Typography variant="h4" component={'h2'}>Hotels</Typography>
+        <Button type='button' variant='contained' onClick={handelAddHotel}>Add Hotel</Button>
+        </Box>  
       <DataGrid
         rows={rows}
         columns={columns}
@@ -74,7 +116,7 @@ const HotelsTable: React.FC = () => {
         }}
         pageSizeOptions={[8]}
         disableRowSelectionOnClick
-        onRowClick={(params) => updateHotel(params.row as Hotel)}
+        onRowClick={(params) => handelUpdateHotel(params.row as Hotel)}
       />
         <Drawer anchor="right" open={open} onClose={()=>setOpen(false)}>
         <Box width={400} padding={2}>
@@ -82,6 +124,9 @@ const HotelsTable: React.FC = () => {
             operation={operation}
             hotel={selectedHotel}
             onClose={() => setOpen(false)}
+            Delete={handelDelete}
+            update={(hotel: Hotel) => handelUpdate(hotel)}
+            add={(hotel: Hotel) => handelAdd(hotel)}
           />
         </Box>
       </Drawer>

@@ -1,17 +1,18 @@
-import { Box, Typography } from "@mui/material";
+import { Box} from "@mui/material";
 import Navbar from '../components/Navbar';
 import style from '../admin.module.css'
 import HotelsTable from "./HotelsTable";
+import Footer from "../../../components/footer";
 
 
 const Rooms: React.FC = () => {
     return (
         <Box>
            <Navbar />
-           <Box className={style.container}>
-                <Typography variant="h4" component={'h2'}>Hotels</Typography>
+           <Box className={style.container} height={'75vh'}>
                 <HotelsTable/> 
-            </Box>     
+            </Box>   
+            <Footer/>
         </Box>
     )
 }
