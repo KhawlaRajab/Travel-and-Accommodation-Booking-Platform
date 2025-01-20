@@ -3,47 +3,37 @@ import { City } from "../type";
 import { CityInitialValues, cityValidationSchema } from "../formSchemaAndConstants";
 import { Divider, Stack, Typography } from "@mui/material";
 import TextInput from "../../../components/Field/TextField";
-import { addCity, deleteCity, updateCity } from "../Api/Api";
 import Button from "../../../components/Button";
-import { axiosInstance } from "../../../axiosInstance";
 
 interface FormProps{
     operation: 'add' | 'update',
     city: City | null,
     onClose: () => void,
+    Delete: () => void,
+    update: (city: City) => void,
+    add:(city:City)=>void
     
 }
 
-const CityForm: React.FC<FormProps> = ({operation,city,onClose}) => {
+const CityForm: React.FC<FormProps> = ({operation,city,onClose,Delete,update,add}) => {
     const formik = useFormik<City>({
         initialValues: city || CityInitialValues,
         validationSchema:cityValidationSchema,
-        onSubmit: async(values) => {
-            try {
+        onSubmit: (values) => {
                 if (operation === 'add')
-                     await addCity(values);
+                    add({...CityInitialValues,...values });
                 else if (city?.id) {
-                    const res = await axiosInstance.put(`/api/cities/${city.id}`, { values });
-                    console.log(res);
+                     update({...city, ...values });
+                
                 }
-            }
-            catch (error) {
-                console.log(error);
-            }
             onClose();
         }
     });
 
     const handleDelete = async () => {
-        try {
             if (city?.id) {
-                const response = await axiosInstance.delete(`/api/cities/${city.id}`);
-                console.log(response);
-            onClose();
-          }
-        } catch (error) {
-            console.log(error);
-        }
+                Delete();
+        } 
       };
     return (
         <FormikProvider value={formik} >
@@ -54,7 +44,8 @@ const CityForm: React.FC<FormProps> = ({operation,city,onClose}) => {
                     
                     <TextInput
                         name='id'
-                        placeholder='id'/>
+                        placeholder='id'
+                        disabled={operation==='update'}   />
 
                     <TextInput
                         name='name'
