@@ -27,6 +27,16 @@ export interface ConfirmationDetail{
         confirmationNumber: string
     
 }
+
+export interface bookingRequest{
+    customerName: string,
+    hotelName: string,
+    roomNumber: string,
+    roomType: string,
+    bookingDateTime: ReactNode,
+    totalCost: number,
+    paymentMethod: string,
+}
   
 export interface CartContextType {
     cartItems: room[];

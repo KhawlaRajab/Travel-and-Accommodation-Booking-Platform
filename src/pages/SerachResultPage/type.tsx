@@ -6,7 +6,6 @@ export interface Amenities{
 }
 
 export interface ResultType{
-
           hotelId: number,
           hotelName: string,
           starRating: number,
@@ -18,4 +17,10 @@ export interface ResultType{
           roomPhotoUrl: string,
           discount: number,
           amenities: Amenities[]
+}
+
+
+export interface  ComponentPropsType{
+    data: ResultType[],
+    onFilter : (filteredData: ResultType[]) => void;
 }
