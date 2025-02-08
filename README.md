@@ -20,7 +20,7 @@ A web application that makes it easy for travelers to search, book, and manage a
 ## Features  
 
 ### 1️⃣ Login Page  
-![Login Page](./assets/login.png)  
+![Login Page](assets/login.png)  
 
 **User Login :**
 username:user , password:user
