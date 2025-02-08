@@ -10,7 +10,6 @@ import { useState } from "react";
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css'; 
 import CountPeople from "./CountPeople";
-// import SearchIcon from '@mui/icons-material/Search';
 import styles from './Search.module.css' 
 import { useSearchContext } from "./SearchContext";
 import { useNavigate } from "react-router-dom";
@@ -96,14 +95,13 @@ const SearchBar: React.FC = () => {
                                     },
                                   ]}
                             />
-                                {/* }  */}
+                                
                             </Popover>    
                         </Grid>
 
 
                         <Grid size={{xs: 12,sm:6, md: 3 }}>  
                              <Button
-                                // id='numberOfPeople'
                                 fullWidth
                                 variant="contained"
                                 onClick={(e: React.MouseEvent<HTMLButtonElement>) => { toggleCount(e) }}
@@ -113,7 +111,6 @@ const SearchBar: React.FC = () => {
                             </Button> 
                          
                             <Popover 
-                                // id='numberOfPeople'
                                 open={open}
                                 onClose={()=> setAnchorEl(null)}
                                 anchorEl={anchorEl}  
@@ -156,7 +153,6 @@ const SearchBar: React.FC = () => {
                         <Grid size={{ xs: 12, sm: 6, md: 1 }}>  
                             <Button type='submit' variant='contained'
                                 fullWidth
-                            // endIcon={<SearchIcon/>}
                                 >
                                 Search</Button>
                         </Grid>

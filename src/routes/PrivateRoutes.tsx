@@ -11,14 +11,12 @@ const PrivateRoute: React.FC<props> = ({ role }) => {
     const { token } = useAuth();
     const location = useLocation();
     if (!token)
-    return <Navigate to="/unauthorized" state={{ from: location }} replace />
+    return <Navigate to="/" state={{ from: location }} replace />
         
     const {userType} =Token(token);
     
     return role === userType? (
         <Outlet />
-    ) : token ? (
-        <Navigate to="/unauthorized" state={{ from: location }} replace />
     ) : (
         <Navigate to="/" state={{ from: location }} replace />
     );

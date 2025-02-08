@@ -4,7 +4,6 @@ import { ResultType } from "../../pages/SerachResultPage/type";
 
 
 export const getSearchedHotels = async (SearchParam: SearchParam): Promise<ResultType[]> => {
-    console.log(SearchParam);
     const searchCretiria = `city=${SearchParam.city}
     &checkInDate=${SearchParam.checkInDate}
     &checkInDate=${SearchParam.checkOutDate}
