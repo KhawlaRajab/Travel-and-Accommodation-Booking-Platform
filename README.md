@@ -43,7 +43,7 @@ username:admin , password:admin
 ![Trending Destination](src/assets/trending.png)    
 
 ### 3️⃣ Search Results Page  
-![Search Results](src/assets/searchReasultPage.png)  
+![Search Results](src/assets/SearchReasultPage.png)  
 
 #### 3.1 Comprehensive Search Filters  
 - Sidebar with filters for price range and amenities.  
