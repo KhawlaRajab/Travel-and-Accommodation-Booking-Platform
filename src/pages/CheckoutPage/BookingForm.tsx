@@ -1,6 +1,6 @@
 import { Field, Form, FormikProvider, useFormik } from "formik";
 import { intialValues, validationSchema } from "./constants";
-import { bookingDetails } from "./type";
+import { bookingDetails, bookingRequest } from "./type";
 import TextInput from "../../components/Field/TextField";
 import { Stack, Typography } from "@mui/material";
 import Button from "../../components/Button";
@@ -8,40 +8,49 @@ import { axiosInstance } from "../../axiosInstance";
 import styles from './style.module.css'
 import { useCart } from "./useCart";
 import { useNavigate } from "react-router-dom";
+import { Token } from "../jwtDecode";
+import { useAuth } from "../LoginPage/AuthContext";
 
 
 const BookingForm: React.FC = () => {
+  const { token } = useAuth();
+  const { given_name }  = Token(token);
   const { cartItems,EmptyCart } = useCart();
   const navigate = useNavigate();
   const formik = useFormik<bookingDetails>({
     initialValues: intialValues,
     validationSchema: validationSchema,
     onSubmit: async (values) => {
-      navigate('/Confirmation');
-      try {
-        const res = await axiosInstance.post<bookingDetails>('/api/auth/Authenticate', {
-          fullName: values.fullName,
-          email: values.email,
-          address: values.address,
-          phoneNumber: values.phoneNumber,
-          paymentMethod: values.paymentMethod,
-          cardNumber: values.cardNumber,
-          expireDate: values.expireDate,
-          CVV: values.CVV,
-          notes: values.notes
-        });
-        
-        console.log(res);
-        console.log(res?.data);
-        EmptyCart();
-        navigate('/Confirmation');
-      }
-      catch (error) {
-                   
-      }
-        
+      payment(values);        
     }
   })
+
+  const payment = (values: bookingDetails) => {
+    cartItems.map(async (item) => {
+      const body: bookingRequest = {
+        customerName: given_name,
+        hotelName: item.roomType,        
+        roomNumber: item.roomNumber.toString(),      
+        roomType: item.roomType,          
+        bookingDateTime: new Date().toISOString(),
+        totalCost: item.price,       
+        paymentMethod: values.paymentMethod,
+      };
+         try {
+            const res = await axiosInstance.post<bookingRequest>('/api/bookings',body);
+            console.log(res?.data);
+            EmptyCart();
+            navigate('/Confirmation');
+          }
+          catch (error) {
+             console.log(error);       
+          }
+
+    }) 
+           EmptyCart();
+           navigate('/Confirmation'); 
+  } 
+
 
   const disabled = ():boolean => {
       return formik.values.paymentMethod !== 'Credit Card';
@@ -122,3 +131,4 @@ const BookingForm: React.FC = () => {
 }
 
 export default BookingForm;
+
