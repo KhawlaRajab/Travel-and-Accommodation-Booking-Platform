@@ -5,7 +5,6 @@ import TextInput from '../../components/Field/TextField';
 import PasswordFeild from '../../components/Field/passwordFeild';
 import { Button, Stack, Typography } from "@mui/material";
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
-// import  { AxiosError } from "axios";
 import { axiosInstance } from "../../axiosInstance";
 import { useAuth } from "./AuthContext";
 import style from './login.module.css';
@@ -31,7 +30,7 @@ const LoginForm: React.FC = () => {
 
              }
             catch (error) {
-                        
+                 console.log(error);        
             }
         }
       
@@ -52,18 +51,18 @@ const LoginForm: React.FC = () => {
                 <Typography variant="h5">Login to TravelZ</Typography>
                 <Typography variant="body1">Welcome, please log in to continue</Typography>  
                 <TextInput
-                     sx={{width:'35ch'}}
+                     sx={{width:'300px'}}
                     name='userName'
                     placeholder='username'
                 />
                 <PasswordFeild 
-                    sx={{width:'35ch'}}
+                    sx={{width:'300px'}}
                     name='password'
                     placeholder='password'/>
                 
                 <Button type='submit'
                         variant='contained'
-                        sx={{ width: '39ch', height: '6ch' }}
+                        sx={{ width: '300px', height: '50px' }}
                         disabled={!formik.isValid} >
                     Login
                 </Button>
