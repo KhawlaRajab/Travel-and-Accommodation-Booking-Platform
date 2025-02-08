@@ -29,21 +29,21 @@ username:user , password:user
 username:admin , password:admin
 
 ### 2️⃣ Home Page  
-![Home Page](./assets/homePage.png)  
+![Home Page](src/assets/homePage.png)  
 
 #### 2.1 Robust Search Functionality  
 
 #### 2.2 Featured Deals Section  
-![Featured Deals](./assets/deals.png)
+![Featured Deals](src/assets/deals.png)
 
 #### 2.3 User’s Recently Visited Hotels  
- ![Recently Visited](./assets/recentlyVisited.png)   
+ ![Recently Visited](src/assets/recentlyVisited.png)   
 
 #### 2.4 Trending Destination Highlights  
-![Trending Destination](./assets/trending.png)    
+![Trending Destination](src/assets/trending.png)    
 
 ### 3️⃣ Search Results Page  
-![Search Results](./assets/searchResultPage.png)  
+![Search Results](src/assets/searchResultPage.png)  
 
 #### 3.1 Comprehensive Search Filters  
 - Sidebar with filters for price range and amenities.  
@@ -57,23 +57,23 @@ username:admin , password:admin
 - Fullscreen viewable high-quality images of the hotel.  
 
 #### 4.2 Detailed Hotel Information  
-![Hotel description and reviews](./assets/description&reviews.png)   
+![Hotel description and reviews](src/assets/description&reviews.png)   
 
 #### 4.3 Room Availability and Selection  
-![Room Availability](./assets/Rooms.png)   
+![Room Availability](src/assets/Rooms.png)   
 
 ### 5️⃣ Checkout & Confirmation Page  
 
 #### 5.1 User Information and Payment  
-![Cart & Checkout Page](./assets/Cart&checkout.png)    
+![Cart & Checkout Page](src/assets/Cart&checkout.png)    
   
 #### 5.2 Confirmation Page 
-![Confirmation Page](./assets/confirmationDetails.png)    
+![Confirmation Page](src/assets/confirmationDetails.png)    
 
 ### 6️⃣ Admin Page for Easy Management  
-![Admin Cities Page](./assets/adminCitiesPage.png)  
+![Admin Cities Page](src/assets/adminCitiesPage.png)  
 
-![Add City Form](./assets/addForm.png)  
+![Add City Form](src/assets/addForm.png)  
 
-![Update or Delete](./assets/update&delete.png)  
+![Update or Delete](src/assets/update&delete.png)  
 
