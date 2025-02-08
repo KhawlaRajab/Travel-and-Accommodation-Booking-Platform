@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from "axios";
 
 export const axiosInstance: AxiosInstance = axios.create({
-    baseURL: 'https://app-hotel-reservation-webapi-uae-dev-001.azurewebsites.net',
+    baseURL: 'https://hotel.foothilltech.net',
 });
 
 
