@@ -62,6 +62,7 @@ const RoomsTable: React.FC = () => {
       const rooms = await getRooms();
       setRows(rooms);
     } catch (err) {
+      console.log(err);
     }
   };
 
@@ -77,7 +78,7 @@ const RoomsTable: React.FC = () => {
       }
     }
     catch (error) {
-      
+      console.log(error);
     }
   } 
   
@@ -89,7 +90,7 @@ const RoomsTable: React.FC = () => {
       }
     }
      catch (error) {
-       
+       console.log(error);
      }
 
   };
@@ -100,6 +101,7 @@ const handelAdd = async (addedRoom: Room) => {
     await addRoom(addedRoom);
     setRows([...rows, addedRoom]);
   } catch (error) {
+    console.log(error);
   }
 };
   

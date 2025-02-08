@@ -29,7 +29,7 @@ const DealCard: React.FC<DealCardProps> = ({hotel}) => {
         />
                 <CardContent>
                     <Typography variant='h6' component={'h2'} >{hotel.title}</Typography>
-                    <Typography variant='subtitle2' component={'p'} paddingY={2}>{hotel.description.slice(20)}</Typography>
+                    <Typography variant='subtitle2' component={'p'} paddingY={2}>{hotel.description.split(' ').slice(0,20).join(' ')+'...'}</Typography>
                    <StyledBox>
                     <Box display='flex' justifyContent={'space-between'}>
                         <PlaceIcon sx={{marginRight:'3px'}} color='primary'/>

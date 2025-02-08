@@ -3,7 +3,7 @@ import { room } from "./type";
 import { getHotelRooms } from "./API/Api";
 import Room from "./Room";
 import Grid from "@mui/material/Grid2";
-import { Box, Typography } from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 
 const Rooms:React.FC<{hotelId:number}> = ({hotelId})=> {
     const { data, isLoading, error } = useQuery<room[], Error>(
@@ -13,11 +13,11 @@ const Rooms:React.FC<{hotelId:number}> = ({hotelId})=> {
         }
     )
 
-    if(isLoading) return <p>Loading...</p>
-    if (error) return <p>error...</p>
     return (
         <Box>
-           <Typography variant="h5" paddingY={3}>Rooms</Typography> 
+            <Typography variant="h5" paddingY={3}>Rooms</Typography> 
+            {error && (<Typography variant="body1">{error?.message}</Typography>)}
+            {isLoading &&(<CircularProgress /> ) }
         <Grid container spacing={3} alignItems={'center'}>
             {data?.map((room) => (
                  <Grid size={{ xs: 12 ,sm:6, md: 4 }} > 

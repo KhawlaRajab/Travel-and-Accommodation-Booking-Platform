@@ -32,6 +32,7 @@ const CityTable: React.FC = () => {
       const cities = await getCities();
       setRows(cities);
     } catch (err) {
+      console.error(err);
     }
   };
 
@@ -47,7 +48,7 @@ const CityTable: React.FC = () => {
       }
     }
     catch (error) {
-      
+       console.log(error);      
     }
   } 
   
@@ -59,7 +60,7 @@ const CityTable: React.FC = () => {
       }
     }
      catch (error) {
-       
+       console.log(error);       
      }
 
   };
@@ -70,7 +71,7 @@ const handelAdd = async (addedCity: City) => {
     await addCity(addedCity);
     setRows([...rows, addedCity]);
   } catch (error) {
-  }
+       console.log(error);  }
 };
   
 

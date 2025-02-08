@@ -32,7 +32,7 @@ const TrendingCard: React.FC<trendProps> = ({trending}) => {
         {trending.cityName}
       </StyledTypography>
             <CardContent>
-                <Typography>{trending.description.split(' ').slice(0,20).join(' ')}</Typography>
+                <Typography>{trending.description.split(' ').slice(0,20).join(' ')+'...'}</Typography>
             </CardContent>
         </Card>
             

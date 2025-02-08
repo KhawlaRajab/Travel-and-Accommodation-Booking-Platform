@@ -1,14 +1,13 @@
 import { useQuery } from "react-query";
 import { gallery } from "./type";
 import { getGallery } from "./API/Api";
-import { Box, ImageList, ImageListItem } from "@mui/material";
+import { Box, CircularProgress, ImageList, ImageListItem } from "@mui/material";
 import { useState } from "react";
 import FullScreenPhoto from "./FullScreenPhoto";
 
 
 
 const Gallery: React.FC<{hotelId:number}> = ({hotelId}) => {
-  // const { hotelId } = useParams();
   const [photoUrl, setPhotoUrl] = useState<string>('');  
   const { data, error, isLoading } = useQuery<gallery[], Error>(
     ["getGallery", hotelId],
@@ -17,9 +16,9 @@ const Gallery: React.FC<{hotelId:number}> = ({hotelId}) => {
       enabled: !!hotelId,
     }
   );
-
- if(isLoading) return <p>Loading...</p>
- if(error) return <p>error...</p>
+ 
+  if(isLoading) return <CircularProgress /> 
+  if (error) return <p>{error.message}</p>
   return (
     <Box sx={{ display: "flex", justifyContent: "center" }}>
       <ImageList sx={{ width: 600, height: 'auto' }} cols={3} rowHeight={160} key={hotelId}>

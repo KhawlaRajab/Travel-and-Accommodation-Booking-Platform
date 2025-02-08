@@ -1,4 +1,4 @@
-import { Container, Typography } from "@mui/material";
+import { CircularProgress, Container, Typography } from "@mui/material";
 import { getRecentlyVisited } from "./Api/Api";
 import Grid from '@mui/material/Grid2';
 import { useQuery } from "react-query";
@@ -6,7 +6,6 @@ import HotelCard from "./Cards/HotelCard";
 import { Hotel } from "./Cards/type";
 import { useAuth } from "../LoginPage/AuthContext";
 import { Token } from "../jwtDecode";
-// import { useEffect } from "react";
 
 
 const RecentlVisited: React.FC = () => {
@@ -19,18 +18,12 @@ const RecentlVisited: React.FC = () => {
       }
     )
     
-    if (isLoading) {
-        return <p>Loading...</p>;
-      }
-    
-      if (error) {
-        return <p>Error: {error.message}</p>;
-      }
-    
 
     return (
       <Container>
-          <Typography variant="h4" component='h2' paddingTop={10} paddingBottom={5}>Recently Visited</Typography>
+         <Typography variant="h4" component='h2' paddingTop={10} paddingBottom={5}>Recently Visited</Typography>
+        {error && (<Typography variant="body1">{error?.message}</Typography>)}
+          {isLoading &&(<CircularProgress /> ) }
             <Grid container spacing={3} alignItems={'center'}>
                 {hotel?.map((hotel) => (
                     <Grid size={{ xs: 12 ,sm:6, md: 4 }} key={hotel.hotelId}> 

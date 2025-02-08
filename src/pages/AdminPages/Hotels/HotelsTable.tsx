@@ -42,6 +42,7 @@ const HotelsTable: React.FC = () => {
         const hotels = await getHotels();
         setRows(hotels);
       } catch (err) {
+        console.log(err);
       }
     };
   
@@ -57,7 +58,7 @@ const HotelsTable: React.FC = () => {
         }
       }
       catch (error) {
-        
+        console.log(error);
       }
     } 
     
@@ -69,7 +70,7 @@ const HotelsTable: React.FC = () => {
         }
       }
        catch (error) {
-         
+         console.log(error);
        }
   
     };
@@ -80,6 +81,7 @@ const HotelsTable: React.FC = () => {
       await addHotel(addedHotel);
       setRows([...rows, addedHotel]);
     } catch (error) {
+      console.log(error);
     }
   };
     

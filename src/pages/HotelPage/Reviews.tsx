@@ -1,4 +1,4 @@
-import { Box, Button, Rating, Stack, Typography } from "@mui/material";
+import { Box, Button, CircularProgress, Rating, Stack, Typography } from "@mui/material";
 import { review } from "./type";
 import { useQuery } from "react-query";
 import { getReviews } from "./API/Api";
@@ -17,7 +17,8 @@ const Reviews:React.FC<{hotelId:number}> = ({hotelId})=> {
     
     const loadMore = () => {
         if (data && data?.length > index + 3)
-            setIndex(data?.length)
+            setIndex(data?.length);
+        else
         setIndex(index + 3);
     }
 
@@ -25,14 +26,13 @@ const Reviews:React.FC<{hotelId:number}> = ({hotelId})=> {
         setIndex(3);
     }
     
-    if(isLoading) return <p>Loading...</p>
-    if (error) return <p>error...</p>
-    
-    
+
 
     return (
         <Box marginTop={2} padding={1} sx={{backgroundColor:'ghostwhite',boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}}>
             <Typography variant="h5">Reviews</Typography>
+            {error && (<Typography variant="body1">{error?.message}</Typography>)}
+            {isLoading &&(<CircularProgress /> ) }
             <Box paddingBottom={1} height={'490px'} sx={{overflowY: "auto"}}  padding={1} >
                 {data?.slice(0, index).map((review) => (
                 
