@@ -1,4 +1,4 @@
-import { Box, Container, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from "@mui/material";
+import { Box, CircularProgress, Container, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from "@mui/material";
 import Navbar from "../../components/Navbar";
 import { useQuery } from "react-query";
 import { ConfirmationDetail } from "./type";
@@ -11,14 +11,14 @@ const ConfirmationDetails: React.FC = () => {
           () => getBookingDetails(bookingId),
           {
             enabled: !!bookingId,
-          }
-
-    )
+          })
     return (
         <Box>
             <Navbar />
             <Container sx={{marginTop:12 ,textAlign:'center'}}>
                 <Typography variant='h5' paddingBottom={3}>Confirmation Details</Typography>
+                {error && (<Typography variant="body1">{error?.message}</Typography>)}
+                {isLoading &&(<CircularProgress /> ) }
                 <TableContainer component={Paper} sx={{ width: '600px', marginX:'auto' }}>
                     <Table>
                       <TableBody>
