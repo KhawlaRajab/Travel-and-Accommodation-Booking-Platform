@@ -9,7 +9,7 @@ const Rooms: React.FC = () => {
     return (
         <Box sx={{hieght:'100vh'}}>
            <Navbar />
-           <Box className={style.container} height={'75vh'}>
+           <Box className={style.container} >
                 <RoomsTable/>
             </Box>     
             <Footer/>

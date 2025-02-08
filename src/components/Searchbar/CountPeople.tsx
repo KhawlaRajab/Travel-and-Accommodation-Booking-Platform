@@ -14,12 +14,12 @@ const CountPeople: React.FC<propsType> = ( {type,defaultCount,onChange}) => {
     
 
     return (
-        <Stack direction="row" spacing={3} alignItems={"center"}>
-            <label>{type +':'}</label>
-            <Stack direction="row" spacing={2} alignItems={"center"}>
+        <Stack direction="row" alignItems={"center"} gap={'10px'} justifyContent={'space-between'} >
+            <span>{type +':'}</span>
+            <Stack direction="row" alignItems={"center"} >
                 <Button type='button' onClick={() => { setCount(count - 1); onChange(count - 1) }} disabled={count === defaultCount}>
                 -</Button>
-                <label style={{border:'1px solid blue', width:'25px',textAlign:'center',height:'30px'}}>{count}</label>
+                <span>{count}</span>
                 <Button type='button' onClick={() => { setCount(count + 1); onChange(count+1) }}>
                 +</Button>
             </Stack>
