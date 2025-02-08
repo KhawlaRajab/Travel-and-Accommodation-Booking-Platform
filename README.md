@@ -2,7 +2,7 @@
 
 A web application that makes it easy for travelers to search, book, and manage accommodations. With a simple booking system, admins can easily manage cities, hotels, and rooms, ensuring a smooth experience for both travelers and admins.
 
----
+--
 
 ## Technologies  
 - **React**: A JavaScript library for building user interfaces.
