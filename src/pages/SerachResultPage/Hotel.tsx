@@ -9,7 +9,7 @@ interface ResultProps{
 const Hotel: React.FC<ResultProps> = ({ searchResult }) => {
     const navigate = useNavigate();
     return (
-        <Card sx={{maxWidth:'650px',minHeight:{sm:'200px'},maxHeight:{md:'200px'}}} >
+        // <Card sx={{maxWidth:'650px',minHeight:{sm:'200px'},maxHeight:{md:'200px'}}} >
             <Stack direction={{sm: 'column',md:'row'}} spacing={1} >
                 <CardMedia
                  component="img"
@@ -40,10 +40,10 @@ const Hotel: React.FC<ResultProps> = ({ searchResult }) => {
                         <Typography variant="subtitle1" component={'span'} >{amenity.name}</Typography>   
                     ))}
                     </Stack>
-                   <Button type='button' variant="contained" sx={{mt:'10px'}} onClick={()=>navigate(`/hotel/:${searchResult.hotelId}`)}>View Details</Button> 
+                   <Button type='button' variant="contained" sx={{mt:'10px'}} onClick={()=>navigate(`/hotel/${searchResult.hotelId}`)}>View Details</Button> 
                 </CardContent>
             </Stack>
-        </Card>
+        // </Card>
     )
 }
 

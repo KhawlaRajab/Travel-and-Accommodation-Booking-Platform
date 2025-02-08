@@ -17,9 +17,8 @@ export const getHotelRooms = async(hotelId:number) => {
 }
 
 
-//مش فاهم لايش 
-// export const getAvailableRooms = async(hotelId:number,checkInDate:string ,checkOutDate:string) => {
-//     const response = await axiosInstance.get(`/Api/hotels/${hotelId}/available_rooms`);
+// export const getAvailableRooms = async(hotelId:number) => {
+//     const response = await axiosInstance.get(`/Api/hotels/${hotelId}/available_rooms?checkInDate=1&CheckOutDate=1`);
 //     return response.data;
 // }
 
