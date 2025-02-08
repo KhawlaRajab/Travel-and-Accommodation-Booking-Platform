@@ -24,16 +24,16 @@ const theme = createTheme({
 
 createRoot(document.getElementById('root')!).render(
 <StrictMode>
+ <AuthProvider>   
   <CartProvider>
    <SearchProvider>
-      <AuthProvider>
-        <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
         <QueryClientProvider client={queryClient}>
             <App />
             </QueryClientProvider>
-          </ThemeProvider>
-        </AuthProvider>    
+       </ThemeProvider>    
       </SearchProvider>   
     </CartProvider> 
+ </AuthProvider>    
   </StrictMode>,
 )

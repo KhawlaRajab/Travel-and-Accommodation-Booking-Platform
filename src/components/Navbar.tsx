@@ -27,7 +27,7 @@ const Navbar: React.FC = () => {
     }
 
     const  logout= (page:string) => {
-        localStorage.setItem('token', '');
+        localStorage.removeItem('token');
         navigate(page);
     }
 
@@ -86,14 +86,14 @@ const Navbar: React.FC = () => {
                             width:'100%'
 
                            }}>
-                            <MenuItem onClick={toggleMenu}> 
+                            <MenuItem> 
                             <StyledIconButton onClick={()=>handelClick('/Cart')}>
                              <Badge color="error" badgeContent={badgeContent} showZero> 
                                <ShoppingCartIcon />
                               </Badge></StyledIconButton></MenuItem>
                             <MenuItem onClick={()=>handelClick('/home')}>Home</MenuItem>
                              <MenuItem onClick={()=>handelClick('/SearchResultPage')}>Search</MenuItem>
-                             <MenuItem onClick={()=>handelClick('/login')}>Logout</MenuItem>
+                             <MenuItem onClick={()=>handelClick('/')}>Logout</MenuItem>
                          </Box>
                     </Menu>
 
