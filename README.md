@@ -10,7 +10,7 @@ A web application that makes it easy for travelers to search, book, and manage a
 - **React Query**: Efficient data fetching, caching, and state synchronization.  
 - **Axios**: Handles HTTP requests for API communication.  
 - **Material UI (MUI)**: Provides pre-styled, modern UI components.  
-- **Date Range Picker**: Enhances date selection for hotel bookings.  
+- **React Date Range**: Enhances date selection for hotel bookings.  
 - **Formik**: Simplifies form handling and state management.  
 - **Yup**: Schema validation for user inputs, ensuring data integrity.   
 - **JWT Decode**: Safely decoding JWTs to extract user credentials and information.
