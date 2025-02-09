@@ -1,8 +1,6 @@
-import { TextFieldProps } from "@mui/material"
-
+import { TextFieldProps } from "@mui/material";
 
 export type FeildProps = TextFieldProps & {
-    name:String,
-    type?:String
-}
-
+  name: String;
+  type?: String;
+};

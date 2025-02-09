@@ -1,16 +1,17 @@
 .form {
-    text-align: center;
-    padding: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(232, 230, 230, 0.19);
+  text-align: center;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(232, 230, 230, 0.19);
 }
 
 .input {
-    width: 90%;
+  width: 90%;
 }
 
 .select {
-    width: 90%;
-    height: 55px;
-    border-radius: 3px;
-    border: 2px solid gainsboro;
+  width: 90%;
+  height: 55px;
+  border-radius: 3px;
+  border: 2px solid gainsboro;
 }

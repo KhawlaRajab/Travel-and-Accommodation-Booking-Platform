@@ -1,18 +1,25 @@
 import { SearchParam } from "./type";
-import { axiosInstance } from "../../axiosInstance";
+import { axiosInstance } from "../../AxiosInstance";
 import { ResultType } from "../../pages/SerachResultPage/type";
 
+export const getSearchedHotels = async (
+  searchParam: SearchParam
+): Promise<ResultType[]> => {
+  console.log(searchParam);
+  const params = new URLSearchParams({
+    city: searchParam.city,
+    checkInDate: searchParam.checkInDate,
+    checkOutDate: searchParam.checkOutDate,
+    sort: searchParam.sort,
+    starRate: String(searchParam.starRate),
+    numberOfRooms: String(searchParam.numberOfRooms),
+    adults: String(searchParam.adults),
+    children: String(searchParam.children),
+  });
 
-export const getSearchedHotels = async (SearchParam: SearchParam): Promise<ResultType[]> => {
-    const searchCretiria = `city=${SearchParam.city}
-    &checkInDate=${SearchParam.checkInDate}
-    &checkInDate=${SearchParam.checkOutDate}
-    &sort=${SearchParam.sort}
-    &starRate=${SearchParam.starRate}&
-    nymberOfRooms=${SearchParam.numberOfRooms}
-    &adults=${SearchParam.adults}&
-    children=${SearchParam.children} `;
-    const response = await axiosInstance.get(`/api/home/search?${searchCretiria}`);
-    console.log(response);
-    return response.data;
-}
+  const response = await axiosInstance.get(
+    `/api/home/search?${params.toString()}`
+  );
+  console.log(response);
+  return response.data;
+};

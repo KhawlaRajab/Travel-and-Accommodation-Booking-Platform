@@ -1,20 +1,15 @@
-import { Box} from "@mui/material";
-import Navbar from '../components/Navbar';
-import style from '../admin.module.css'
+import { Box } from "@mui/material";
+import style from "../admin.module.css";
 import HotelsTable from "./HotelsTable";
-import Footer from "../../../components/footer";
-
 
 const Rooms: React.FC = () => {
-    return (
-        <Box>
-           <Navbar />
-           <Box className={style.container} >
-                <HotelsTable/> 
-            </Box>   
-            <Footer/>
-        </Box>
-    )
-}
+  return (
+    <Box>
+      <Box className={style.container}>
+        <HotelsTable />
+      </Box>
+    </Box>
+  );
+};
 
 export default Rooms;

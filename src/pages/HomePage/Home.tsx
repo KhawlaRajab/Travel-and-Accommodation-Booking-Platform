@@ -1,23 +1,17 @@
-import Navbar from "../../components/Navbar"
-import Header from "../../components/header";
+import Header from "../../components/Header";
 import FeaturedDeals from "./FeaturedDeals";
 import RecentlyVisited from "./RecentlyVisited";
 import Trending from "./Trendeing";
-import Footer from "../../components/footer";
 
-
-
-const Home:React.FC = () => {
-    return (
-        <>
-            <Navbar />
-            <Header />
-            <FeaturedDeals />
-            <RecentlyVisited />
-            <Trending />
-            <Footer/>
-        </>
-    )
-}
+const Home: React.FC = () => {
+  return (
+    <>
+      <Header />
+      <FeaturedDeals />
+      <RecentlyVisited />
+      <Trending />
+    </>
+  );
+};
 
 export default Home;
