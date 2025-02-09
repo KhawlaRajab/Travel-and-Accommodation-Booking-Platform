@@ -1,50 +1,103 @@
-# React + TypeScript + Vite
+# 🌐 Travel and Accommodation Booking Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A web application that makes it easy for travelers to search, book, and manage accommodations. With a simple booking system, admins can easily manage cities, hotels, and rooms, ensuring a smooth experience for both travelers and admins.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies  
+- **React**: A JavaScript library for building user interfaces.
+- **React Router DOM**: Manages routing and navigation.  
+- **React Query**: Efficient data fetching, caching, and state synchronization.  
+- **Axios**: Handles HTTP requests for API communication.  
+- **Material UI (MUI)**: Provides pre-styled, modern UI components.  
+- **React Date Range**: Enhances date selection for hotel bookings.  
+- **Formik**: Simplifies form handling and state management.  
+- **Yup**: Schema validation for user inputs, ensuring data integrity.   
+- **JWT Decode**: Safely decoding JWTs to extract user credentials and information.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Features  
 
-- Configure the top-level `parserOptions` property like this:
+### 1️⃣ Login Page  
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+![Login Page](src/assets/login.png)  
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+**User Login :**
+username:user , password:user
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+**Admin Login :**
+username:admin , password:admin
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+---
+### 2️⃣ Home Page  
+
+![Home Page](src/assets/homePage.png)  
+
+#### 2.1 Robust Search Functionality  
+
+#### 2.2 Featured Deals Section  
+
+![Featured Deals](src/assets/deals.png)
+
+#### 2.3 User’s Recently Visited Hotels 
+
+ ![Recently Visited](src/assets/recentlyVisited.png)   
+
+#### 2.4 Trending Destination Highlights 
+
+![Trending Destination](src/assets/trending.png)    
+
+---
+
+### 3️⃣ Search Results Page  
+
+![Search Results](src/assets/SearchReasultPage.png)  
+
+#### 3.1 Comprehensive Search Filters  
+
+- Sidebar with filters for price range and amenities.  
+
+#### 3.2 Hotel Listings 
+
+- Listings of hotels matching search criteria.  
+
+---
+
+### 4️⃣ Hotel Page  
+
+#### 4.1 Visual Gallery  
+
+- Fullscreen viewable high-quality images of the hotel.  
+
+#### 4.2 Detailed Hotel Information  
+
+![Hotel description and reviews](src/assets/description&reviews.png)   
+
+#### 4.3 Room Availability and Selection
+
+![Room Availability](src/assets/Rooms.png)   
+
+---
+
+### 5️⃣ Checkout & Confirmation Page  
+
+#### 5.1 User Information and Payment  
+
+![Cart & Checkout Page](src/assets/Cart&checkout.png)    
+  
+#### 5.2 Confirmation Page 
+
+![Confirmation Page](src/assets/confirmationDetails.png)    
+
+---
+
+### 6️⃣ Admin Page for Easy Management  
+
+![Admin Cities Page](src/assets/adminCitiesPage.png)  
+
+![Add City Form](src/assets/addForm.png)  
+
+![Update or Delete](src/assets/update&delete.png)  
+
+---
